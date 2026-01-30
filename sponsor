@@ -1,0 +1,41 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+case "$1" in
+  find)
+    shift
+    npx ts-node src/index.ts discover -c "$@"
+    ;;
+  check)
+    shift
+    npx ts-node src/index.ts qualify --all "$@"
+    ;;
+  digest)
+    shift
+    npx ts-node src/index.ts daily_sponsors "$@"
+    ;;
+  status)
+    npx ts-node src/index.ts status
+    ;;
+  list)
+    npx ts-node src/index.ts list
+    ;;
+  *)
+    echo ""
+    echo "  sponsor - Panna World Championship Sponsor Finder"
+    echo ""
+    echo "  Usage:"
+    echo "    ./sponsor find <category>    Find companies (e.g., sportswear, gaming)"
+    echo "    ./sponsor check              Qualify all found companies"
+    echo "    ./sponsor digest             Generate outreach digest"
+    echo "    ./sponsor status             Show database stats"
+    echo "    ./sponsor list               List all companies"
+    echo ""
+    echo "  Examples:"
+    echo "    ./sponsor find sportswear"
+    echo "    ./sponsor find \"Danish brands\""
+    echo "    ./sponsor check"
+    echo "    ./sponsor digest"
+    echo ""
+    ;;
+esac

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.local
+.env*.local
+digests/
+.vercel
+*.png
+*.jpg
+*.jpeg
